@@ -12,8 +12,7 @@
 
 ### [Framework资源](https://github.com/OS-Q) 
 
-* [资源](src/)
-* [文档](docs/)
+* [Framework N15](https://github.com/OS-Q/N15)
 
 ### [关联资源](https://github.com/OS-Q/)
 
