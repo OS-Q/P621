@@ -17,39 +17,34 @@
   ],
   "frameworks": {
       "opencpu": {
-        "package": "framework-NB",
+        "package": "framework-quectel",
         "script": "builder/frameworks/opencpu.py"
       },
       "openlinux": {
-        "package": "framework-NB",
+        "package": "framework-quectel",
         "script": "builder/frameworks/openlinux.py"
       },
       "threadx": {
-        "package": "framework-NB",
+        "package": "framework-quectel",
         "script": "builder/frameworks/threadx.py"
       },
       "arduino": {
-        "package": "framework-NB",
+        "package": "framework-quectel",
         "script": "builder/frameworks/arduino.py"
       },
       "wizio": {
-        "package": "framework-NB",
+        "package": "framework-quectel",
         "script": "builder/frameworks/wizio.py"
       }      
   },
   "packages": {
-    "framework-NB": {
+    "framework-quectel": {
         "type": "framework",
         "version": "https://github.com/OS-Q/N15.git"
     },
     "toolchain-gccarmnoneeabi": {
         "type": "toolchain",
         "version": "=1.70201.0"
-    },
-    "tool-quectel": {
-        "type": "uploader",
-        "version": "https://github.com/Wiz-IO/tool-quectel.git",
-        "optional": true
     }
   }
 }
