@@ -1,5 +1,5 @@
 {
-  "name": "Quectel EC2x module",
+  "name": "Quectel EC2x",
   "url": "https://www.quectel.com/product/ec25.htm",
   "build": {
     "core": "ec2x",

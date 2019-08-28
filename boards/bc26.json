@@ -1,5 +1,5 @@
 {
-  "name": "Quectel BC26 module",
+  "name": "Quectel BC26",
   "url": "https://www.quectel.com/product/bc66.htm",
   "build": {
     "core": "bc66",

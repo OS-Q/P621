@@ -1,5 +1,5 @@
 {
-  "name": "Quectel MC60 module",
+  "name": "Quectel MC60",
   "url": "https://www.quectel.com/product/mc60.htm",
   "build": {
     "core": "mc60",
