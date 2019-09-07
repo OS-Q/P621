@@ -1,14 +1,16 @@
 {
   "name": "NB-IoT",
   "title": "NB-IoT",
-  "description": "Quectel NB-IoT development platform",
-  "url": "https://github.com/OS-Q/H11",
+  "description": "NB-IoT development platform",
+  "url": "https://github.com/OS-Q/H9",
   "homepage": "https://github.com/OS-Q",
   "license": " ",
-  "engines": { "platformio": "^3.0.0" },
+  "engines": {
+    "platformio": "<5"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OS-Q/H11.git"
+    "url": "https://github.com/OS-Q/H9.git"
   },
   "version": "1.0.0",
   "packageRepositories": [
@@ -17,26 +19,26 @@
   ],
   "frameworks": {
       "opencpu": {
-        "package": "framework-quectel",
+        "package": "framework-NB",
         "script": "builder/frameworks/opencpu.py"
       },
       "openlinux": {
-        "package": "framework-quectel",
+        "package": "framework-NB",
         "script": "builder/frameworks/openlinux.py"
       },
       "threadx": {
-        "package": "framework-quectel",
+        "package": "framework-NB",
         "script": "builder/frameworks/threadx.py"
       },
       "arduino": {
-        "package": "framework-quectel",
+        "package": "framework-NB",
         "script": "builder/frameworks/arduino.py"
       }     
   },
   "packages": {
-    "framework-quectel": {
+    "framework-NB": {
         "type": "framework",
-        "version": "https://github.com/OS-Q/N15.git"
+        "version": "https://github.com/OS-Q/N19.git"
     },
     "toolchain-gccarmnoneeabi": {
         "type": "toolchain",
