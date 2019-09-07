@@ -19,24 +19,24 @@
   ],
   "frameworks": {
       "opencpu": {
-        "package": "framework-quectel",
+        "package": "framework-NB",
         "script": "builder/frameworks/opencpu.py"
       },
       "openlinux": {
-        "package": "framework-quectel",
+        "package": "framework-NB",
         "script": "builder/frameworks/openlinux.py"
       },
       "threadx": {
-        "package": "framework-quectel",
+        "package": "framework-NB",
         "script": "builder/frameworks/threadx.py"
       },
       "arduino": {
-        "package": "framework-quectel",
+        "package": "framework-NB",
         "script": "builder/frameworks/arduino.py"
       }     
   },
   "packages": {
-    "framework-quectel": {
+    "framework-NB": {
         "type": "framework",
         "version": "https://github.com/OS-Q/N19.git"
     },
