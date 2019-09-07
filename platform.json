@@ -19,15 +19,15 @@
   ],
   "frameworks": {
       "opencpu": {
-        "package": "framework-NB",
+        "package": "framework-opencpu",
         "script": "builder/frameworks/opencpu.py"
       },
       "openlinux": {
-        "package": "framework-NB",
+        "package": "framework-opencpu",
         "script": "builder/frameworks/openlinux.py"
       },
       "threadx": {
-        "package": "framework-NB",
+        "package": "framework-opencpu",
         "script": "builder/frameworks/threadx.py"
       },
       "arduino": {
@@ -36,10 +36,14 @@
       }     
   },
   "packages": {
-    "framework-NB": {
+    "framework-opencpu": {
         "type": "framework",
-        "version": "https://github.com/OS-Q/N19.git"
+        "version": "https://github.com/OS-Q/N18.git"
     },
+    "framework-NB": {
+      "type": "framework",
+      "version": "https://github.com/OS-Q/N19.git"
+  },
     "toolchain-gccarmnoneeabi": {
         "type": "toolchain",
         "version": "=1.70201.0"
