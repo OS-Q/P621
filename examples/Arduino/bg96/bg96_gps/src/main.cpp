@@ -1,8 +1,9 @@
 #include <Arduino.h>
 #include <Device.h>
-Device dev;
 #include <NMEA.h>
+
 NMEA nmea;
+Device dev;
 
 struct minmea_sentence_rmc rmc;
 void onNMEA(char *line)
