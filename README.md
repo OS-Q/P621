@@ -9,7 +9,7 @@
 
 ### [Platform描述](https://github.com/OS-Q/H11/wiki) 
 
-[Platform H11](https://github.com/OS-Q/H11)基于PlatformIO平台，用于NB-IoT软件开发，包括[MT2625](https://github.com/sochub/MT2625)、[MDM9206](https://github.com/sochub/MDM9206)、[MDM9607](https://github.com/sochub/MDM9607)等芯片。
+[Platform H11](https://github.com/OS-Q/H11)基于PlatformIO平台，用于NB-IoT软件开发，包括[MT2625](https://github.com/sochub/MT2625)和[MDM9206](https://github.com/sochub/MDM9206)。
 
 ### [OS-Q = Open Solutions | Open Source |  Operating System ](http://www.OS-Q.com/H11)
 ####  2019-9-6
