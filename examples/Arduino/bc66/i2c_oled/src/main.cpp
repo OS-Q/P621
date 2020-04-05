@@ -30,7 +30,7 @@ void oled_setup()
   display.setTextSize(1);
   display.setTextColor(WHITE, BLACK);
   display.println();
-  display.println("      WizIO 2019");
+  display.println("      OS-Q 2019");
   display.display();
 }
 
@@ -49,7 +49,7 @@ void oled_loop()
   char *p = (char *)asctime(timeinfo);
   p[10] = '\n';
   display.println(p);
-  display.println("  Quectel BC66 WizIO");
+  display.println("  Quectel BC66 OS-Q");
   display.display();
 }
 

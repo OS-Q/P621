@@ -1,3 +1,7 @@
+# OS-Q 2019 Qitas
+# http://www.wizio.eu/
+# https://github.com/Wiz-IO
+
 import os
 from os.path import join
 from shutil import copyfile

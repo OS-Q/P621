@@ -1,4 +1,4 @@
-# WizIO 2019 Qitas
+# OS-Q 2019 Qitas
 # http://www.wizio.eu/
 # https://github.com/Wiz-IO
 

@@ -1,3 +1,6 @@
+# OS-Q 2018 Qitas
+#   http://www.wizio.eu/
+#   https://github.com/Wiz-IO/platform-quectel
 
 from SCons.Script import DefaultEnvironment
 

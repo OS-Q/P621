@@ -1,4 +1,8 @@
 
+# OS-Q 2018 Qitas
+# http://www.wizio.eu/
+# https://github.com/Wiz-IO
+
 from SCons.Script import DefaultEnvironment
 
 env = DefaultEnvironment()

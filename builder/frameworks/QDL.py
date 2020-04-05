@@ -3,7 +3,7 @@
 # Qualcomm-Quectel EFS Uploader ver 1.00
 #
 #   Copyright (C) 2019 Qitas. All rights reserved.
-#   Author: Qitas <the.wizarda@gmail.com> WizIO
+#   Author: Qitas <the.wizarda@gmail.com> OS-Q
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -15,7 +15,7 @@
 #    notice, this list of conditions and the following disclaimer in
 #    the documentation and/or other materials provided with the
 #    distribution.
-# 3. Neither the name WizIO nor the names of its contributors may be
+# 3. Neither the name OS-Q nor the names of its contributors may be
 #    used to endorse or promote products derived from this software
 #    without specific prior written permission.
 #

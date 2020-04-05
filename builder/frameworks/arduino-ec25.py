@@ -1,3 +1,7 @@
+# OS-Q 2019 Qitas
+#   http://www.wizio.eu/
+#   https://github.com/Wiz-IO/platform-quectel
+
 import os, json
 from os.path import join
 from SCons.Script import DefaultEnvironment, Builder

@@ -67,7 +67,7 @@ server.on('request', function (req, res) {
 
 server.listen(function () {
   console.log('================================')
-  console.log('WizIO CoAP Test Server Started')
+  console.log('OS-Q CoAP Test Server Started')
   console.log(dateTime())
   console.log('================================')
 })
