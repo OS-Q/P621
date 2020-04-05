@@ -1,25 +1,24 @@
 {
-  "name": "H11",
-  "title": "H11",
-  "description": "NB-IoT开发平台",
-  "url": "https://github.com/OS-Q/H11",
-  "homepage": "http://OS-Q.com/H11",
+  "name": "H10",
+  "title": "H10",
+  "description": "Quectel wireless Embedded module",
+  "url": "https://github.com/OS-Q/H10",
+  "homepage": "http://OS-Q.com/H10",
   "license": "MIT",
   "engines": {
     "platformio": "<5"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OS-Q/H11.git"
+    "url": "https://github.com/OS-Q/H10.git"
   },
   "version": "1.0.0",
   "packageRepositories": [
     "http://182.61.61.133/link/toolchain/manifest.json",
+    "http://182.61.61.133/link/toolchain/openocd.json",
     "http://182.61.61.133/link/framework/manifest.json",
     "http://182.61.61.133/link/platformio.json",
-    "http://182.61.61.133/link/platform.json",
-    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
-    "http://dl.platformio.org/packages/manifest.json"
+    "http://182.61.61.133/link/platform.json"
   ],
   "frameworks": {
       "opencpu": {
@@ -47,10 +46,19 @@
     "framework-N39": {
       "type": "framework",
       "version": "https://github.com/OS-Q/N39.git"
-  },
+    },
     "toolchain-gccarmnoneeabi": {
+      "type": "toolchain",
+      "version": "~1.70201.0"
+    },
+    "toolchain-gcc-ec2x": {
         "type": "toolchain",
-        "version": "=1.70201.0"
+        "version": "~1.0.0"
+    },      
+    "tool-quectel": {
+        "type": "uploader",
+        "version": "~2.0.20",
+        "optional": true
     }
   }
 }

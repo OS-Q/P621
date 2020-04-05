@@ -1,22 +1,21 @@
+# WizIO 2019 Georgi Angelov
+#   http://www.wizio.eu/
+#   https://github.com/Wiz-IO/platform-quectel
+
 import os
 from os.path import join
 from shutil import copyfile
-from SCons.Script import ARGUMENTS, DefaultEnvironment, Builder
-
+from SCons.Script import DefaultEnvironment, Builder
 from colorama import Fore
+from QDL import bg96_upload
+
 def dev_uploader(target, source, env):
-    print(Fore.BLUE +  'Use QEFS_Explore.exe - DM Comm port')
-    print(Fore.BLUE +  'Upload from Project folder ') + env.subst("$BUILD_DIR").replace("\\", "/")
-    print(Fore.GREEN + '    program.bin')
-    print(Fore.GREEN + '    oem_app_path.ini ( only once )')    
-    print(Fore.BLUE +  'To Module folder datatx/')
-    print(Fore.BLUE + 'Restart module')
-    return 
+    print(Fore.BLUE +  'Must select DM Comm port ( platformio.ini, Add: upload_port = COMx )')
+    bg96_upload(env.get("UPLOAD_PORT"), env.subst("$BUILD_DIR"))
 
 def dev_header(target, source, env):
     d = source[0].path 
-    print d
-    f = open(d.replace("program.bin", "oem_app_path.ini"), "wb")
+    f = open(d.replace("program.bin", "oem_app_path.ini"), "w+")
     f.write("/datatx/program.bin")
     f.close()
 
@@ -45,14 +44,14 @@ def dev_compiler(env):
 def dev_init(env, platform):
     dev_create_template(env)
     dev_compiler(env)
-    framework_dir = env.PioPlatform().get_package_dir("framework-N39")
+    framework_dir = env.PioPlatform().get_package_dir("framework-quectel")
     core = env.BoardConfig().get("build.core")    
     variant = env.BoardConfig().get("build.variant")  
     env.sdk = env.BoardConfig().get("build.sdk", "SDK2").upper()  #SDK2 #SDK2831 #SDK325 #SDK424 
     env.base = env.BoardConfig().get("build.base", "0x40000000")    
     env.heap = env.BoardConfig().get("build.heap", "1048576") 
 
-    print "CORE", core, env.sdk, "RO_BASE =", env.base, "HEAP =", env.heap
+    print( "CORE", core, env.sdk, "RO_BASE =", env.base, "HEAP =", env.heap )
 
     env.Append(
        CPPDEFINES = [ # -D                         
@@ -84,7 +83,8 @@ def dev_init(env, platform):
         ],        
         CFLAGS = [
             #"-std=c11",   
-            "-Wno-pointer-sign",                                                                      
+            "-Wno-pointer-sign", 
+            "-Wstrict-prototypes",
         ],  
         CXXFLAGS = [   
             #"-std=c++11",                             
@@ -105,7 +105,6 @@ def dev_init(env, platform):
             "-fno-zero-initialized-in-bss", 
             "-fsingle-precision-constant",                                                 
             "-Wall", 
-            "-Wstrict-prototypes", 
             "-Wp,-w",                                                       
         ],                     
         LINKFLAGS = [  

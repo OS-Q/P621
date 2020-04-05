@@ -1,3 +1,7 @@
+# WizIO 2018 Georgi Angelov
+# http://www.wizio.eu/
+# https://github.com/Wiz-IO
+
 import os
 import sys
 import struct
@@ -16,7 +20,7 @@ def makeHDR( dat ):
     dst.write(data) 
     
     src_size = os.stat( dat ).st_size + 64 #+64
-    #print "APPLICATIN SIZE: ", src_size + 64, " bytes"
+    #print( "APPLICATIN SIZE: ", src_size + 64, " bytes" )
     dst.write( struct.pack('<i', src_size) ) # write size 
 
     arr = [                        0xFF, 0xFF, 0xFF, 0xFF, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]

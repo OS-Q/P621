@@ -3,7 +3,7 @@ from SCons.Script import (AlwaysBuild, Builder, COMMAND_LINE_TARGETS, Default, D
 from colorama import Fore
 
 env = DefaultEnvironment()
-print(Fore.GREEN + '<<<<<<<<<<<< '+env.BoardConfig().get("name").upper()+" 2019 >>>>>>>>>>>>")
+print( Fore.GREEN + '<<<<<<<<<<<< '+env.BoardConfig().get("name").upper()+" Qitas   >>>>>>>>>>>>" )
 
 ####################################################
 # Build executable and linkable program

@@ -1,5 +1,5 @@
 {
-  "name": "Quectel BG96",
+  "name": "Quectel BG96 module",
   "url": "https://www.quectel.com/product/bg96.htm",
   "build": {
     "core": "bg96",
