@@ -4,7 +4,7 @@
   "description": "Quectel wireless Embedded module",
   "url": "https://github.com/OS-Q/H10",
   "homepage": "http://OS-Q.com/H10",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "engines": {
     "platformio": "<5"
   },
@@ -12,7 +12,13 @@
     "type": "git",
     "url": "https://github.com/OS-Q/H10.git"
   },
-  "version": "1.0.0",
+  "authors": [{
+    "name": "qitas",
+    "email": "qitas@qitas.cn",
+    "url": "http://www.qitas.cn"
+  }],
+  "keywords": "H10,Quectel,NB-IoT,BC26,BC66,BG96,EC2X",
+  "version": "2.0.20",
   "packageRepositories": [
     "http://182.61.61.133/link/toolchain/manifest.json",
     "http://182.61.61.133/link/toolchain/openocd.json",
@@ -34,7 +40,7 @@
         "script": "builder/frameworks/threadx.py"
       },
       "arduino": {
-        "package": "framework-N39",
+        "package": "framework-N38",
         "script": "builder/frameworks/arduino.py"
       }     
   },
@@ -42,10 +48,6 @@
     "framework-N38": {
         "type": "framework",
         "version": "~2.0.20"
-    },
-    "framework-N39": {
-      "type": "framework",
-      "version": "https://github.com/OS-Q/N39.git"
     },
     "toolchain-gccarmnoneeabi": {
       "type": "toolchain",
