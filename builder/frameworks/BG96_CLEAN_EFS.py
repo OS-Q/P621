@@ -1,19 +1,3 @@
-#######################################################
-#
-#   Quectel BG96 Create CLEAN EFS partition
-#
-#   WizIO 2019 Georgi Angelov
-#       http://www.wizio.eu/
-#       https://github.com/Wiz-IO
-#
-#   Unpack firmware
-#   Run this scrypt in firmware 'root' folder, 
-#   Scrypt will make new folder 'CLEAN_EFS'
-#   Load folder 'CLEAN_EFS' as firmware and flash it
-#   EFS will be as new ...
-#
-#######################################################
-
 import os
 from os.path import join
 from shutil import copyfile, rmtree

@@ -1,7 +1,7 @@
 /*  
   Arduino Quectel BC66
     Created on: 28.02.2020
-        Author: Georgi Angelov
+        Author: Qitas
  */
 
 #include <Arduino.h>
@@ -22,7 +22,7 @@ int var __attribute__((section(".sram"))); // put variable in SRAM, MAXIMUM 256 
 void setup()
 {
   Serial.begin(115200);
-  Serial.printf("Arduino Firmware: %s 2020 Georgi Angelov\n", Dev.version());
+  Serial.printf("Arduino Firmware: %s 2020 Qitas\n", Dev.version());
   Dev.band(8);       // search band 900 MHz
   Dev.noSleep(true); // enable deep sleep or Psm.Sleep();
 
@@ -59,7 +59,7 @@ void loop()
 }
 
 /*
-Arduino Firmware: BC66NBR01A07 2020 Georgi Angelov
+Arduino Firmware: BC66NBR01A07 2020 Qitas
 Wakeup form Reset
 SRAM value: 0
 Psm: 10800 sec, 120 sec

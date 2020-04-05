@@ -1,7 +1,7 @@
 /*  
   Arduino Quectel BC66
     Created on: 28.02.2020
-        Author: Georgi Angelov
+        Author: Qitas
  */
 
 #include <Arduino.h>
@@ -43,7 +43,7 @@ void client_loop()
 void setup()
 {
   Serial.begin(115200, true);                                                 // and enable ::printf()
-  Serial.printf("Arduino Firmware: %s 2020 Georgi Angelov\n", Dev.version()); // Hello World
+  Serial.printf("Arduino Firmware: %s 2020 Qitas\n", Dev.version()); // Hello World
   Dev.noSleep(true);                                                          // PSM
   Dev.band(8);                                                                // search for 900 MHz
   Dev.dns();                                                                  // google dns
@@ -64,7 +64,7 @@ void loop()
 }
 
 /*
-Arduino Firmware: BC66NBR01A07 2020 Georgi Angelov
+Arduino Firmware: BC66NBR01A07 2020 Qitas
 google.com IP: 172.217.169.110
 --- TEST BEGIN ---
 Connecting HTTP ... Elapsed: 2 sec

@@ -22,7 +22,7 @@ void oled_init()
   display.setTextSize(1);
   display.setTextColor(WHITE, BLACK);
   display.println();
-  display.println("      WizIO 2020");
+  display.println(" Qitas 2020");
   display.display();
   delay(4000);
 }
@@ -30,7 +30,7 @@ void oled_init()
 void setup()
 {
   Serial.begin(115200, true);
-  Serial.println("Arduino Quectel BC66 2020 Georgi Angelov");
+  Serial.println("Arduino Quectel BC66 2020 Qitas");
   oled_init();
 }
 

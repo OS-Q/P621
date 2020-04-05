@@ -1,7 +1,3 @@
-# WizIO 2019 Georgi Angelov
-#   http://www.wizio.eu/
-#   https://github.com/Wiz-IO/platform-quectel
-
 import os
 from os.path import join
 from shutil import copyfile
@@ -44,7 +40,7 @@ def dev_compiler(env):
 def dev_init(env, platform):
     dev_create_template(env)
     dev_compiler(env)
-    framework_dir = env.PioPlatform().get_package_dir("framework-quectel")
+    framework_dir = env.PioPlatform().get_package_dir("framework-N38")
     core = env.BoardConfig().get("build.core")    
     variant = env.BoardConfig().get("build.variant")  
     env.sdk = env.BoardConfig().get("build.sdk", "SDK2").upper()  #SDK2 #SDK2831 #SDK325 #SDK424 

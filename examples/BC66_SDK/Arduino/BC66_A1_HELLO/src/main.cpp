@@ -29,7 +29,7 @@ String imei;
 void setup()
 {
   Serial.begin(115200, true);                                                 // and enable ::printf()
-  Serial.printf("Arduino Firmware: %s 2020 Georgi Angelov\n", Dev.version()); // Hello World
+  Serial.printf("Arduino Firmware: %s 2020 Qitas\n", Dev.version()); // Hello World
   Dev.urc(on_urc_response);                                                   // not important
   Dev.getImei(imei);                                                          // see LDEV.h
   Serial.printf("IMEI: %s\n", imei.c_str());                                  // ...
@@ -51,7 +51,7 @@ void loop()
 }
 
 /*
-    Arduino Firmware: BC66NBR01A10 2020 Georgi Angelov
+    Arduino Firmware: BC66NBR01A10 2020 Qitas
     IMEI: 867997030127091
     Battery: 3292 mV
     Quectel_Ltd

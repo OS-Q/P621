@@ -2,8 +2,8 @@
 # 
 # Qualcomm-Quectel EFS Uploader ver 1.00
 #
-#   Copyright (C) 2019 Georgi Angelov. All rights reserved.
-#   Author: Georgi Angelov <the.wizarda@gmail.com> WizIO
+#   Copyright (C) 2019 Qitas. All rights reserved.
+#   Author: Qitas <the.wizarda@gmail.com> WizIO
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
