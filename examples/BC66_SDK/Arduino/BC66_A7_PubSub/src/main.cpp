@@ -1,9 +1,4 @@
 #include <Arduino.h>
-/*
-    Install Library:
-    PubSubClient by Nick O'Leary
-    https://github.com/knolleary
-*/
 #include <PubSubClient.h>
 
 #define HOST "mqtt.eclipse.org"

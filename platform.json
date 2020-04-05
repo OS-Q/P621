@@ -18,7 +18,7 @@
     "url": "http://www.qitas.cn"
   }],
   "keywords": "H10,Quectel,NB-IoT,BC26,BC66,BG96,EC2X",
-  "version": "2.0.20",
+  "version": "1.0.0",
   "packageRepositories": [
     "http://182.61.61.133/link/toolchain/manifest.json",
     "http://182.61.61.133/link/toolchain/openocd.json",
@@ -47,7 +47,7 @@
   "packages": {
     "framework-N38": {
         "type": "framework",
-        "version": "https://github.com/OS-Q/N38.git"
+        "version": "~1.0.0"
     },
     "toolchain-gccarmnoneeabi": {
       "type": "toolchain",

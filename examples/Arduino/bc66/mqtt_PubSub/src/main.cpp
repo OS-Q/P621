@@ -1,13 +1,6 @@
 #include <Arduino.h>
 #include <nbClient.h>
-
-/*
-    Install Library:
-    PubSubClient by Nick O'Leary
-    https://github.com/knolleary
-*/
-
-#include <PubSubClient.h> // 
+#include <PubSubClient.h> 
 
 nbClient tcp;
 IPAddress server(0, 0, 0, 0); // your mqtt broker
