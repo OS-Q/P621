@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <Device.h>
+Device dev;
 #include <Wire.h>
 
-Device dev;
 // Sensor: Si7021-A20-GM1
 // Store: https://store.comet.bg/en/Catalogue/Product/49730/#e30%3D
 // PDF: https://store.comet.bg/download-file.php?id=16187

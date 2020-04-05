@@ -2,7 +2,7 @@
 #include <nbClient.h>
 
 nbClient tcp;
-#define HOST "qitas.cn"
+#define HOST "wizio.eu"
 
 void tcp_http()
 {
