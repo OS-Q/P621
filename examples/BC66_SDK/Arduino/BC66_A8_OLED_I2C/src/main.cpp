@@ -2,6 +2,7 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
 #define SLAVE_ADDRESS 0x78 >> 1
 Adafruit_SSD1306 display = Adafruit_SSD1306(128, 64, &Wire);
 // https://forum.arduino.cc/index.php?topic=375985.0

@@ -7,6 +7,4 @@ class P12Platform(PlatformBase):
         framework = variables.get("pioframework", [])
         if variables["board"].startswith('ec2'):
             del self.packages["toolchain-gccarmnoneeabi"]
-        else:
-            del self.packages["toolchain-gcc-ec2x"]
         return PlatformBase.configure_default_packages(self, variables, targets)

@@ -52,10 +52,6 @@
         "type": "toolchain",
         "version": "~1.70201.0"
     },
-    "toolchain-gcc-ec2x": {
-      "type": "toolchain",
-      "version": "https://github.com/Wiz-IO/LIB/raw/master/quectel/toolchain-gcc-ec2x-v1.0.0.zip"
-  },
     "tool-quectel": {
         "type": "uploader",
         "version": "~2.0.20",
