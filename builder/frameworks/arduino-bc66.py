@@ -22,7 +22,7 @@ def dev_create_template(env):
     D = join(env.subst("$PROJECT_DIR"), "config")
     if False == os.path.isdir(D):
         os.makedirs(D)
-        S = join(env.PioPlatform().get_package_dir("framework-quectel"), "templates", env.BoardConfig().get("build.core"))
+        S = join(env.PioPlatform().get_package_dir("N38"), "templates", env.BoardConfig().get("build.core"))
         F = [
             "arduino_task_cfg.h",
             "custom_feature_def.h",
@@ -60,7 +60,7 @@ def dev_compiler(env):
 def dev_init(env, platform):
     dev_create_template(env)
     dev_compiler(env)
-    framework_dir = env.PioPlatform().get_package_dir("framework-quectel")
+    framework_dir = env.PioPlatform().get_package_dir("N38")
     arduino = join(framework_dir, platform)
     variant = env.BoardConfig().get("build.variant")
     core = env.BoardConfig().get("build.core")
