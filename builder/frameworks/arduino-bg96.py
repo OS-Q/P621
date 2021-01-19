@@ -1,37 +1,22 @@
 import os
 from os.path import join
 from shutil import copyfile
-from SCons.Script import ARGUMENTS, DefaultEnvironment, Builder
-from m66 import makeHDR, makeCFG
-from MT6261 import upload_app
+from SCons.Script import DefaultEnvironment, Builder
+from colorama import Fore
+from QDL import bg96_upload
 
 def dev_uploader(target, source, env):
-    return upload_app(env.BoardConfig().get("build.core"), join(env.get("BUILD_DIR"), "program.bin"), env.get("UPLOAD_PORT"))
+    print(Fore.BLUE +  'Must select DM Comm port ( platformio.ini, Add: upload_port = COMx )')
+    bg96_upload(env.get("UPLOAD_PORT"), env.subst("$BUILD_DIR"))
 
 def dev_header(target, source, env):
-    makeHDR( source[0].path )
-    makeCFG( source[0].path, start_address = 0x102C7040 )
+    d = source[0].path
+    f = open(d.replace("program.bin", "oem_app_path.ini"), "w+")
+    f.write("/datatx/program.bin")
+    f.close()
 
 def dev_create_template(env):
-    D = join(env.subst("$PROJECT_DIR"), "config")
-    if False == os.path.isdir(D):
-        os.makedirs(D)
-        S = join(env.PioPlatform().get_package_dir("framework-quectel"), "templates", env.BoardConfig().get("build.core"))
-        F = [
-            "arduino_task_cfg.h",
-            "custom_feature_def.h",
-            "custom_gpio_cfg.h",
-            "custom_heap_cfg.h",
-            "custom_sys_cfg.c",
-            "custom_config.c"
-        ]
-        for I in F:
-            dst = join(D, I)
-            if False == os.path.isfile(dst):
-                #print( "+++> ", join(S, I), dst )
-                copyfile(join(S, I), dst)
-        os.rename(join(D, "arduino_task_cfg.h") , join(D, "custom_task_cfg.h") )
-
+    return
 
 def dev_compiler(env):
     env.Replace(
@@ -58,32 +43,47 @@ def dev_init(env, platform):
     framework_dir = env.PioPlatform().get_package_dir("framework-quectel")
     core = env.BoardConfig().get("build.core")
     variant = env.BoardConfig().get("build.variant")
-    lib_dir = join(framework_dir, "libraries")
-    linker = join(lib_dir, "cpp_{}.ld".format(core))
-    env.firmware = env.BoardConfig().get("build.firmware", "M66FAR01A12BT").replace("-", "_").replace(".", "_").upper()
+    env.sdk = env.BoardConfig().get("build.sdk", "SDK2").upper()  #SDK2 #SDK2831 #SDK325 #SDK424
+    env.base = env.BoardConfig().get("build.base", "0x40000000")
+    env.heap = env.BoardConfig().get("build.heap", "1048576")
+
+    print( "CORE", core, env.sdk, "RO_BASE =", env.base, "HEAP =", env.heap )
+
     env.Append(
        CPPDEFINES = [ # -D
-            "ARDUINO=200", "CORE_" + core.upper().replace("-", "_"),
+            "{}=200".format(platform.upper()),
+            "CORE_" + core.upper().replace("-", "_"),
+            "QAPI_TXM_MODULE",
+            "TXM_MODULE",
+            "TX_DAM_QC_CUSTOMIZATIONS",
+            "TX_ENABLE_PROFILING",
+            "TX_ENABLE_EVENT_TRACE",
+            "TX_DISABLE_NOTIFY_CALLBACKS",
+            "FX_FILEX_PRESENT",
+            "TX_ENABLE_IRQ_NESTING",
+            "TX3_CHANGES",
+            "_RO_BASE_=" + env.base, # 0x40000000
+            "HEAP=" + env.heap       # 1M
         ],
         CPPPATH = [ # -I
-            join(framework_dir,  "opencpu", core),
-            join(framework_dir,  "opencpu", core, "include"),
-            join(framework_dir,  "opencpu", core, "ril", "inc"),
-            join(framework_dir,  "opencpu", core, "fota", "inc"),
             join(framework_dir,  platform, platform),
             join(framework_dir,  platform, "cores", core),
             join(framework_dir,  platform, "variants", variant),
-            join(framework_dir,  "api", core),
+            join(framework_dir, "threadx", core, env.sdk),
+            join(framework_dir, "threadx", core, env.sdk, "qapi"),
+            join(framework_dir, "threadx", core, env.sdk, "threadx_api"),
+            join(framework_dir, "threadx", core, env.sdk, "quectel", "include"),
+            join(framework_dir, "threadx", core, "wizio"),
             join("$PROJECT_DIR", "lib"),
-            join("$PROJECT_DIR", "include"),
-            join("$PROJECT_DIR", "config")
+            join("$PROJECT_DIR", "include")
         ],
         CFLAGS = [
-            "-std=c11",
+            #"-std=c11",
             "-Wno-pointer-sign",
+            "-Wstrict-prototypes",
         ],
         CXXFLAGS = [
-            "-std=c++11",
+            #"-std=c++11",
             "-fno-rtti",
             "-fno-exceptions",
             "-fno-non-call-exceptions",
@@ -91,39 +91,34 @@ def dev_init(env, platform):
             "-fno-threadsafe-statics",
         ],
         CCFLAGS = [
-            "-Os", "-g",
-            "-march=armv5te",
-            "-mfloat-abi=soft",
-            "-mfpu=vfp",
-            "-mthumb-interwork",
+            "-O1",
+            "-marm",
+            "-mcpu=cortex-a7",
+            "-mfloat-abi=softfp",
             "-fdata-sections",
             "-ffunction-sections",
             "-fno-strict-aliasing",
+            "-fno-zero-initialized-in-bss",
             "-fsingle-precision-constant",
             "-Wall",
-            "-Wstrict-prototypes",
             "-Wp,-w",
         ],
         LINKFLAGS = [
-            "-march=armv5te",
-            "-mfloat-abi=soft",
-            "-mfpu=vfp",
-            "-fsingle-precision-constant",
-            "-mthumb-interwork",
+            "-O1",
+            "-g",
+            "-marm",
+            "-mcpu=cortex-a7",
+            "-mfloat-abi=softfp",
             "-nostartfiles",
-            "-nodefaultlibs",
             "-fno-use-cxa-atexit",
+            "-fno-zero-initialized-in-bss",
+            "-Xlinker", "--defsym=_RO_BASE_=" + env.base,
             "-Xlinker", "--gc-sections",
             "-Wl,--gc-sections",
         ],
-        LIBPATH = [ lib_dir ],
-        LDSCRIPT_PATH = linker,
-        LIBS = [
-            "m", "gcc",
-            "_app_start_{}".format(core),
-            "_{}".format(env.firmware)
-        ],
         LIBSOURCE_DIRS=[ join(framework_dir, platform, "libraries", core), ],
+        LDSCRIPT_PATH = join(framework_dir, "threadx", core, "cpp.ld"),
+        LIBS = [ "gcc", "m" ],
         BUILDERS = dict(
             ElfToBin = Builder(
                 action = env.VerboseAction(" ".join([
@@ -133,16 +128,18 @@ def dev_init(env, platform):
                     "$SOURCES",
                     "$TARGET",
                 ]), "Building $TARGET"),
-                suffix = ".dat"
+                suffix = ".bin"
             ),
             MakeHeader = Builder(
                 action = env.VerboseAction(dev_header, "ADD HEADER"),
-                suffix = ".bin"
+                suffix = ".ini"
             )
         ),
         UPLOADCMD = dev_uploader
     )
+
     libs = []
+    #ARDUINO
     libs.append(
         env.BuildLibrary(
             join("$BUILD_DIR", "_" + platform),
@@ -158,25 +155,22 @@ def dev_init(env, platform):
             join("$BUILD_DIR", "_variant"),
             join(framework_dir, platform, "variants", variant),
     ))
+    #THREADX
     libs.append(
         env.BuildLibrary(
-            join("$BUILD_DIR", "_api"),
-            join(framework_dir, "api", core),
+            join("$BUILD_DIR", "_threadx"),
+            join(framework_dir, "threadx", core, env.sdk),
     ))
     libs.append(
         env.BuildLibrary(
-            join("$BUILD_DIR", "_opencpu"),
-            join(framework_dir, "opencpu", core),
+            join("$BUILD_DIR", "_wizio"),
+            join(framework_dir, "threadx", core, "wizio"),
     ))
+    #PROJECT
     libs.append(
         env.BuildLibrary(
-            join("$BUILD_DIR", "_custom_lib"),
+            join("$BUILD_DIR", "_custom"),
             join("$PROJECT_DIR", "lib"),
-    ))
-    libs.append(
-        env.BuildLibrary(
-            join("$BUILD_DIR", "_custom_config"),
-            join("$PROJECT_DIR", "config"),
     ))
 
     env.Append(LIBS = libs)

@@ -1,10 +1,9 @@
-
 from os.path import join
 from SCons.Script import (AlwaysBuild, Builder, COMMAND_LINE_TARGETS, Default, DefaultEnvironment)
 from colorama import Fore
 
 env = DefaultEnvironment()
-print( Fore.GREEN + '<<<<<<<<<<<< '+env.BoardConfig().get("name").upper()+" 2018 Qitas >>>>>>>>>>>>" )
+print( Fore.GREEN + '<<<<<<<<<<<< '+env.BoardConfig().get("name").upper()+" 2020 OS-Q >>>>>>>>>>>>" )
 
 ####################################################
 # Build executable and linkable program
