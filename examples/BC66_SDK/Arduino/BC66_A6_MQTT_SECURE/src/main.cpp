@@ -33,7 +33,7 @@ void onMessage(MessageData *m)
 void setup()
 {
   Serial.begin(115200, true);
-  Serial.printf("Arduino Firmware: %s 2020 Qitas\n", Dev.version());
+  Serial.printf("Arduino Firmware: %s 2020 Georgi Angelov\n", Dev.version());
   Dev.urc(on_urc_response); 
   Dev.noSleep(true);
   Dev.band(8);

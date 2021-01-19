@@ -55,7 +55,7 @@ void client_loop()
 void setup()
 {
   Serial.begin(115200, true);                                                 // and enable ::printf()
-  Serial.printf("Arduino Firmware: %s 2020 Qitas\n", Dev.version()); // Hello World
+  Serial.printf("Arduino Firmware: %s 2020 Georgi Angelov\n", Dev.version()); // Hello World
   Dev.urc(on_urc_response);                                                   // not important
   Dev.noSleep(true);                                                          // PSM
   Dev.band(8);                                                                // search for 900 MHz

@@ -10,9 +10,10 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: [3.8]
         example:
-          - "examples/Arduino/get_info"
-          - "examples/Arduino/https_internal"
-          - "examples/Arduino/i2c_oled"
+          - "examples/Arduino/bg96/bg96_i2c_Si7021"
+          - "examples/BC66_SDK/CPP/BC66_CPP_HELLO"
+          - "examples/BC66_SDK/Arduino/BC66_A9_SI7021"
+          - "examples/BC66_SDK/Arduino/BC66_A11_DS1820_DHT_GPIO"
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2

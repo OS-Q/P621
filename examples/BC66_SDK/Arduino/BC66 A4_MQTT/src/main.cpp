@@ -1,3 +1,9 @@
+/*  
+  Arduino Quectel BC66
+    Created on: 28.02.2020
+        Author: Georgi Angelov
+ */
+
 #include <Arduino.h>
 #include <IPAddress.h>
 #include <LMQTT.h>
@@ -18,7 +24,7 @@ void blink_loop()
 void setup()
 {
   Serial.begin(115200, true);
-  Serial.printf("Arduino Firmware: %s 2020 Qitas\n", Dev.version());
+  Serial.printf("Arduino Firmware: %s 2020 Georgi Angelov\n", Dev.version());
   Dev.noSleep(true);
   Dev.band(8);
   Dev.dns();
@@ -85,7 +91,7 @@ void loop()
 }
 
 /*
-Arduino Firmware: BC66NBR01A07 2020 Qitas
+Arduino Firmware: BC66NBR01A07 2020 Georgi Angelov
 mqtt.eclipse.org IP: 137.135.83.217
 Connecting to mqtt.eclipse.org
 Connected

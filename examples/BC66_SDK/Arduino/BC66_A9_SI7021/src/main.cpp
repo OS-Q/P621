@@ -54,7 +54,7 @@ void displayData(float temperature, float humidity)
 void setup()
 {
   Serial.begin(115200, true);
-  Serial.println("Arduino Quectel BC66 2020 Qitas");
+  Serial.println("Arduino Quectel BC66 2020 Georgi Angelov");
   Dev.noSleep();
   delay(2000);
   Wire.begin();

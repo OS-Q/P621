@@ -1,4 +1,9 @@
 #include <Arduino.h>
+/*
+    Install Library:
+    PubSubClient by Nick O'Leary
+    https://github.com/knolleary
+*/
 #include <PubSubClient.h>
 
 #define HOST "mqtt.eclipse.org"
@@ -36,7 +41,7 @@ void blink_loop()
 void setup()
 {
   Serial.begin(115200, true);
-  Serial.printf("Arduino Firmware: %s 2020 Qitas\n", Dev.version());
+  Serial.printf("Arduino Firmware: %s 2020 Georgi Angelov\n", Dev.version());
 
 #ifdef MQTT_SECURE
   client.set_ca_certificate(server_ca);
@@ -78,7 +83,7 @@ void loop()
 }
 
 /*
-  Arduino Firmware: BC66NBR01A10 2020 Qitas
+  Arduino Firmware: BC66NBR01A10 2020 Georgi Angelov
   mqtt.eclipse.org IP: 137.135.83.217
   Connecting to mqtt.eclipse.org : 8883
   Connected

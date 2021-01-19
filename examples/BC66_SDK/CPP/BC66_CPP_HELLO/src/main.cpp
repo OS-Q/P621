@@ -1,6 +1,5 @@
 #include <os_wizio.h>
 #include <string>
-
 UART u;
 
 void proc_main_task(s32 taskId)
@@ -10,7 +9,7 @@ void proc_main_task(s32 taskId)
     u = uart_create(0); // for port 0
     uart_begin(u, 0);   // open uart
     uart_retarget(u);   // enable printf
-    printf("Hello World, Quectel BC66 2020 Qitas\n");
+    printf("Hello World, Quectel BC66 2020 Georgi Angelov\n");
     std::string s = "We think in generalities, ";
     s += "but we live in details.";
     printf("%s\n", s.c_str());
@@ -29,7 +28,7 @@ void proc_main_task(s32 taskId)
 }
 
 /*
-    Hello World, Quectel BC66 2020 Qitas
+    Hello World, Quectel BC66 2020 Georgi Angelov
     We think in generalities, but we live in details.
     [MSG] 4097, 0, 0
     [APP] Ril Ready
