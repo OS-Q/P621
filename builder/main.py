@@ -13,11 +13,11 @@ elf = env.BuildProgram()
 src = env.MakeHeader( join("$BUILD_DIR", "${PROGNAME}"), env.ElfToBin(join("$BUILD_DIR", "${PROGNAME}"), elf) )
 AlwaysBuild( src )
 
-upload = env.Alias("upload", src, [ 
+upload = env.Alias("upload", src, [
     env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),
     env.VerboseAction("$UPLOADCMD", '\033[93m'+"Uploading: $PROGNAME"),
     env.VerboseAction("", '\033[93m'+"Ready"),
 ])
-AlwaysBuild( upload )    
+AlwaysBuild( upload )
 
 Default( src )

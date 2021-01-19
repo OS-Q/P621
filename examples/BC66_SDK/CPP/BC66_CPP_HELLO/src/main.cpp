@@ -1,5 +1,6 @@
 #include <os_wizio.h>
 #include <string>
+
 UART u;
 
 void proc_main_task(s32 taskId)

@@ -1,24 +1,23 @@
 {
-  "name": "H10",
-  "title": "H10",
+  "name": "P12",
+  "title": "Platform P12",
   "description": "Quectel wireless Embedded module",
-  "url": "https://github.com/OS-Q/H10",
-  "homepage": "http://OS-Q.com/H10",
+  "homepage": "http://OS-Q.com/P12",
   "license": "Apache-2.0",
+  "keywords": [
+    "OS-Q",
+    "dev-platform",
+    "Quectel",
+    "NB-IoT"
+  ],
   "engines": {
-    "platformio": "<5"
+    "platformio": "^5"
   },
+  "version": "1.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OS-Q/H10.git"
+    "url": "https://github.com/OS-Q/P12.git"
   },
-  "authors": [{
-    "name": "qitas",
-    "email": "qitas@qitas.cn",
-    "url": "http://www.qitas.cn"
-  }],
-  "keywords": "H10,Quectel,NB-IoT,BC26,BC66,BG96,EC2X",
-  "version": "1.0.0",
   "packageRepositories": [
     "http://182.61.61.133/link/toolchain/manifest.json",
     "http://182.61.61.133/link/toolchain/openocd.json",
@@ -35,14 +34,10 @@
         "package": "framework-N38",
         "script": "builder/frameworks/openlinux.py"
       },
-      "threadx": {
-        "package": "framework-N38",
-        "script": "builder/frameworks/threadx.py"
-      },
       "arduino": {
         "package": "framework-N38",
         "script": "builder/frameworks/arduino.py"
-      }     
+      }
   },
   "packages": {
     "framework-N38": {
@@ -56,7 +51,7 @@
     "toolchain-gcc-ec2x": {
         "type": "toolchain",
         "version": "~1.0.0"
-    },      
+    },
     "tool-quectel": {
         "type": "uploader",
         "version": "~2.0.20",
