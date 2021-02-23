@@ -1,8 +1,8 @@
 {
-  "name": "P12",
-  "title": "Platform P12",
+  "name": "P67",
+  "title": "Platform P67",
   "description": "Quectel wireless Embedded module",
-  "homepage": "http://OS-Q.com/P12",
+  "homepage": "http://OS-Q.com/P67",
   "license": "Apache-2.0",
   "keywords": [
     "OS-Q",
@@ -16,7 +16,7 @@
   "version": "1.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OS-Q/P12.git"
+    "url": "https://github.com/OS-Q/P67.git"
   },
   "packageRepositories": [
     "http://182.61.61.133/link/toolchain/manifest.json",
@@ -27,26 +27,26 @@
   ],
   "frameworks": {
       "opencpu": {
-        "package": "N38",
+        "package": "A67",
         "script": "builder/frameworks/opencpu.py"
       },
       "openlinux": {
-        "package": "N38",
+        "package": "A67",
         "script": "builder/frameworks/openlinux.py"
       },
       "threadx": {
-        "package": "N38",
+        "package": "A67",
         "script": "builder/frameworks/threadx.py"
       },
       "arduino": {
-        "package": "N38",
+        "package": "A67",
         "script": "builder/frameworks/arduino.py"
       }
   },
   "packages": {
-    "N38": {
+    "A67": {
         "type": "framework",
-        "version": "https://github.com/OS-Q/N38.git"
+        "version": "https://github.com/OS-Q/A67.git"
     },
     "toolchain-gccarmnoneeabi": {
         "type": "toolchain",

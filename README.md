@@ -1,8 +1,8 @@
-﻿# [Platform P12](https://github.com/OS-Q/P12)
+﻿# [P67](https://github.com/OS-Q/P67)
 
 [![sites](http://182.61.61.133/link/resources/OSQ.png)](http://www.OS-Q.com)
-### [简介](https://github.com/OS-Q/P12/wiki)
+### [简介](https://github.com/OS-Q/P67/wiki)
 
-[Platform P12](https://github.com/OS-Q/P12)基于[PlatformIO](https://github.com/platformio/platformio-core) 框架
+[P67](https://github.com/OS-Q/P67)
 
 ### [Q = (OpenSource & OperatingSystem) ](http://www.OS-Q.com)
