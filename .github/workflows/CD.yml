@@ -55,7 +55,7 @@ jobs:
         id: tag
         if: startsWith(github.ref, 'refs/tags/')
         run: |
-          echo "::set-output name=release_tag::release_package_$(date +"%Y.%m.%d")_${GITHUB_REF/refs\/tags\//}"
+          echo "::set-output name=release_tag::release_p67_$(date +"%Y.%m.%d")_${GITHUB_REF/refs\/tags\//}"
           echo "::set-output name=status::success"
 
       - name: Package Src
@@ -102,6 +102,12 @@ jobs:
           ossutil cp ${{ env.FIRMWARE }}/P67.zip ${{ secrets.OSS_BUCKET }} -rf
           echo "::set-output name=status::success"
 
+      - name: Delet tag
+        run: |
+          git fetch
+          git tag -d ${GITHUB_REF/refs\/tags\//}
+          git push origin :refs/tags/${GITHUB_REF/refs\/tags\//}
+
 
   rebuild:
     needs:
@@ -131,11 +137,7 @@ jobs:
         id: rebuild
         if: steps.getgh.outputs.status == 'success' && !cancelled()
         run: |
-          qio run -d examples/gpio-blink
-          qio run -d examples/arduino-blink
-          qio run -d examples/socket-example
-          qio run -d examples/ssl-socket-example
-          qio run -d examples/ssl-socket-clientauth
+          qio run -d examples/Arduino/bg96/bg96_i2c_Si7021
 
       - name: Send Mail
         if: steps.rebuild.outputs.status == 'success' && !cancelled()

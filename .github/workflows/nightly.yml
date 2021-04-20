@@ -73,12 +73,9 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: [3.9]
         example:
-          - "examples/arduino-blink"
-          - "examples/gpio-blink"
-          - "examples/adc-example"
-          - "examples/socket-example"
-          - "examples/ssl-socket-example"
-          - "examples/ssl-socket-clientauth"
+          - "Arduino/bg96/bg96_i2c_Si7021"
+          - "Arduino/bg96/bg96_dss_dns"
+          - "Arduino/bg96/bg96_client_http"
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -95,7 +92,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: Wiz-IO/platform-quectel
+          repository: Wiz-IO/platformio-quectel-examples
           token: ${{ secrets.OSQ_REPO_TOKEN }}
           path: PIO
 
