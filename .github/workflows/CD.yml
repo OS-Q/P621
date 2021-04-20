@@ -61,7 +61,7 @@ jobs:
       - name: Package Src
         id: package
         run: |
-          echo "Platform P67 for GSM SoC" >> README.txt
+          echo "Platform P67 for Quectel Module" >> README.txt
           echo $(date +"%Y.%m.%d") >> README.txt
           echo ${GITHUB_REF/refs\/tags\//} >> README.txt
           echo -e "www.OS-Q.com\n" >> README.txt
@@ -185,7 +185,6 @@ jobs:
           message: "build fail"
 
       - name: Delet tag
-        id: delet
         run: |
           git fetch
           git tag -d ${GITHUB_REF/refs\/tags\//}
@@ -214,8 +213,35 @@ jobs:
           message: "release fail"
 
       - name: Delet tag
-        id: delet
         run: |
           git fetch
           git tag -d ${GITHUB_REF/refs\/tags\//}
           git push origin :refs/tags/${GITHUB_REF/refs\/tags\//}
+
+    rebuild_fail:
+    needs:
+      - rebuild
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: notification
+        uses: stopstopstop/mqtt-action@master
+        with:
+          protocol: mqtt
+          host: ${{secrets.MQTT_SERVER}}
+          port: 1883
+          username: ${{secrets.MQTT_USERNAME}}
+          password: ${{secrets.MQTT_PASSWORD}}
+          topic: ${{github.repository}}/${{github.workflow}}
+          message: "rebuild fail"
+
+      - name: Delet release
+        run: |
+          git fetch
+          git tag -d ${{ steps.tag.outputs.release_tag }}
+          git push origin :refs/tags/${{ steps.tag.outputs.release_tag }}
