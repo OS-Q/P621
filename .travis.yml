@@ -3,11 +3,12 @@ python:
   - "3.7"
 
 env:
-  - PLATFORMIO_PROJECT_DIR=examples/Blink
-  - PLATFORMIO_PROJECT_DIR=examples/MPU_Speed_Setting
+  - PLATFORMIO_PROJECT_DIR=examples/Arduino/bg96/bg96_i2c_Si7021
+  - PLATFORMIO_PROJECT_DIR=examples/Arduino/bg96/bg96_dss_dns
+  - PLATFORMIO_PROJECT_DIR=examples/Arduino/bg96/bg96_client_http
 
 install:
-  - pip install -U https://github.com/OS-Q/S03/archive/master.zip
+  - pip install -U https://github.com/OS-Q/S03/releases/latest/download/S03.zip
   - platformio platform install file://.
 
 script:
@@ -15,3 +16,4 @@ script:
 
 notifications:
   email: false
+
