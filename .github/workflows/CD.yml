@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.repository == 'OS-Q/P68'
+    if: github.repository == 'OS-Q/P67'
     strategy:
       fail-fast: true
       matrix:
@@ -61,12 +61,12 @@ jobs:
       - name: Package Src
         id: package
         run: |
-          echo "Platform P68 for GSM SoC" >> README.txt
+          echo "Platform P67 for GSM SoC" >> README.txt
           echo $(date +"%Y.%m.%d") >> README.txt
           echo ${GITHUB_REF/refs\/tags\//} >> README.txt
           echo -e "www.OS-Q.com\n" >> README.txt
           git log --stat -1 >> README.txt
-          zip -r P68.zip boards extend link.json link.py
+          zip -r P67.zip boards extend link.json link.py
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           echo "::set-output name=status::success"
 
@@ -74,8 +74,8 @@ jobs:
         if: steps.package.outputs.status == 'success' && !cancelled()
         uses: actions/upload-artifact@v2
         with:
-          name: P68
-          path: ${{ env.FIRMWARE }}/P68.zip
+          name: P67
+          path: ${{ env.FIRMWARE }}/P67.zip
 
       - name: Upload Release
         id: upload-release
@@ -86,7 +86,7 @@ jobs:
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
           files: |
-            ${{ env.FIRMWARE }}/P68.zip
+            ${{ env.FIRMWARE }}/P67.zip
             ${{ env.FIRMWARE }}/README.txt
 
       - name: Setup OSS
@@ -99,7 +99,7 @@ jobs:
       - name: Upload To OSS
         id: OSS
         run: |
-          ossutil cp ${{ env.FIRMWARE }}/P68.zip ${{ secrets.OSS_BUCKET }} -rf
+          ossutil cp ${{ env.FIRMWARE }}/P67.zip ${{ secrets.OSS_BUCKET }} -rf
           echo "::set-output name=status::success"
 
 
@@ -124,7 +124,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -U https://github.com/OS-Q/S03/releases/latest/download/S03.zip
-          qio platform install https://github.com/OS-Q/P68/releases/latest/download/P68.zip
+          qio platform install https://github.com/OS-Q/P67/releases/latest/download/P67.zip
           echo "::set-output name=status::success"
 
       - name: ReBuild
@@ -145,13 +145,13 @@ jobs:
           server_port: 465
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          subject: OS-Q P68 Released
+          subject: OS-Q P67 Released
           to: ${{secrets.MAIL_TO}}
           from: Qitas
           cc: ${{github.event.pusher.email}}
           content_type: text/html
           convert_markdown: true
-          attachments: P68.zip
+          attachments: P67.zip
           body: file://README.md
 
       - name: Delet tag
