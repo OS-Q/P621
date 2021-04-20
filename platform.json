@@ -1,60 +1,54 @@
 {
-  "name": "P67",
-  "title": "Platform P67",
-  "description": "Quectel wireless Embedded module",
-  "homepage": "http://OS-Q.com/P67",
+  "name": "quectel",
+  "title": "Quectel",
+  "description": "Quectel development platform 2018 Georgi Angelov",
+  "url": "https://github.com/Wiz-IO/platform-quectel",
+  "homepage": "http://www.wizio.eu/",
   "license": "Apache-2.0",
-  "keywords": [
-    "OS-Q",
-    "dev-platform",
-    "Quectel",
-    "NB-IoT"
-  ],
-  "engines": {
-    "platformio": "^5"
-  },
-  "version": "1.0.1",
+  "engines": { "platformio": "^3.0.0" },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OS-Q/P67.git"
+    "url": "https://github.com/Wiz-IO/platform-quectel.git"
   },
+  "version": "2.1.03",
   "packageRepositories": [
-    "http://182.61.61.133/link/toolchain/manifest.json",
-    "http://182.61.61.133/link/toolchain/openocd.json",
-    "http://182.61.61.133/link/framework/manifest.json",
-    "http://182.61.61.133/link/platformio.json",
-    "http://182.61.61.133/link/platform.json"
+    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
+    "http://dl.platformio.org/packages/manifest.json"
   ],
   "frameworks": {
       "opencpu": {
-        "package": "A67",
+        "package": "framework-quectel",
         "script": "builder/frameworks/opencpu.py"
       },
       "openlinux": {
-        "package": "A67",
+        "package": "framework-quectel",
         "script": "builder/frameworks/openlinux.py"
       },
       "threadx": {
-        "package": "A67",
+        "package": "framework-quectel",
         "script": "builder/frameworks/threadx.py"
       },
       "arduino": {
-        "package": "A67",
+        "package": "framework-quectel",
         "script": "builder/frameworks/arduino.py"
-      }
+      }     
   },
   "packages": {
-    "A67": {
+    "framework-quectel": {
         "type": "framework",
-        "version": "https://github.com/OS-Q/A67.git"
+        "version": "https://github.com/Wiz-IO/framework-quectel.git"
     },
     "toolchain-gccarmnoneeabi": {
         "type": "toolchain",
-        "version": "~1.70201.0"
+        "version": "=1.70201.0"
     },
+    "toolchain-gcc-ec2x": {
+        "type": "toolchain",
+        "version": "https://github.com/Wiz-IO/LIB/raw/master/quectel/toolchain-gcc-ec2x-v1.0.0.zip"
+    },      
     "tool-quectel": {
         "type": "uploader",
-        "version": "~2.0.20",
+        "version": "https://github.com/Wiz-IO/tool-quectel.git",
         "optional": true
     }
   }

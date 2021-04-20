@@ -1,3 +1,7 @@
+# WizIO 2019 Georgi Angelov
+#   http://www.wizio.eu/
+#   https://github.com/Wiz-IO
+
 import os, sys
 from os.path import join
 from shutil import copyfile
@@ -8,11 +12,11 @@ from MT2625 import upload_app
 def dev_uploader(target, source, env):
     try:
         plugin = env.BoardConfig().get("upload.plugin")
-        sys.path.insert(0, join( os.path.dirname( os.path.abspath( env["PLATFORM_MANIFEST"] ) ), "boards",  ))
+        sys.path.insert(0, join( os.path.dirname( os.path.abspath( env["PLATFORM_MANIFEST"] ) ), "boards",  )) 
         print("THE UPLOADER USE PLUGIN", plugin )
     except:
-        plugin = None
-    return upload_app(env.BoardConfig().get("build.core"), join(env.get("BUILD_DIR"), "program.bin"), env.get("UPLOAD_PORT"), plugin)
+        plugin = None     
+    return upload_app(env.BoardConfig().get("build.core"), join(env.get("BUILD_DIR"), "program.bin"), env.get("UPLOAD_PORT"), plugin) 
 
 def dev_header(target, source, env):
     makeHDR( source[0].path )
@@ -20,9 +24,9 @@ def dev_header(target, source, env):
 
 def dev_create_template(env):
     D = join(env.subst("$PROJECT_DIR"), "config")
-    if False == os.path.isdir(D):
+    if False == os.path.isdir(D): 
         os.makedirs(D)
-        S = join(env.PioPlatform().get_package_dir("A67"), "templates", env.BoardConfig().get("build.core"))
+        S = join(env.PioPlatform().get_package_dir("framework-quectel"), "templates", env.BoardConfig().get("build.core"))
         F = [
             "custom_feature_def.h",
             "custom_gpio_cfg.h",
@@ -33,10 +37,10 @@ def dev_create_template(env):
         ]
         for I in F:
             dst = join(D, I)
-            if False == os.path.isfile(dst):
+            if False == os.path.isfile(dst): 
                 copyfile(join(S, I), dst)
     D = join(env.subst("$PROJECT_DIR"), "src")
-    S = join(env.PioPlatform().get_package_dir("A67"), "templates", env.BoardConfig().get("build.core"))
+    S = join(env.PioPlatform().get_package_dir("framework-quectel"), "templates", env.BoardConfig().get("build.core"))
     if False == os.path.isfile( join(D, "main.c") ) and False == os.path.isfile( join(D, "main.cpp") ):
         copyfile( join(S, "main.c"), join(D, "main.c") )
 
@@ -56,89 +60,89 @@ def dev_compiler(env):
         SIZEDATAREGEXP=r"^(?:\.data|\.bss|\.noinit)\s+(\d+).*",
         SIZECHECKCMD="$SIZETOOL -A -d $SOURCES",
         SIZEPRINTCMD='$SIZETOOL -B -d $SOURCES',
-        PROGSUFFIX=".elf",
+        PROGSUFFIX=".elf", 
     )
-    env.cortex = ["-mcpu=cortex-m4", "-mfloat-abi=hard", "-mfpu=fpv4-sp-d16", "-mthumb"]
+    env.cortex = ["-mcpu=cortex-m4", "-mfloat-abi=hard", "-mfpu=fpv4-sp-d16", "-mthumb"] 
 
 def dev_init(env, platform):
     dev_create_template(env)
     dev_compiler(env)
-    framework_dir = env.PioPlatform().get_package_dir("A67")
-    core = env.BoardConfig().get("build.core")
+    framework_dir = env.PioPlatform().get_package_dir("framework-quectel")
+    core = env.BoardConfig().get("build.core")     
     SDK = join(framework_dir, platform, core,  env.BoardConfig().get("build.sdk", "SDK15"))
     disable_nano = env.BoardConfig().get("build.disable_nano", "0") # defaut nano is enabled
-    nano = []
+    nano = []    
     if disable_nano == "0":
         nano = ["-specs=nano.specs", "-u", "_printf_float", "-u", "_scanf_float" ]
-
+        
     env.Append(
-       CPPDEFINES = [ # -D
-            platform.upper(),
-            "CORE_" + core.upper().replace("-", "_"),
-        ],
+       CPPDEFINES = [ # -D                        
+            platform.upper(), 
+            "CORE_" + core.upper().replace("-", "_"),            
+        ],        
         CPPPATH = [ # -I
             join(SDK),
             join(SDK, "include"),
-            join(SDK, "ril", "inc"),
-            join(SDK, "wizio"),
+            join(SDK, "ril", "inc"),  
+            join(SDK, "wizio"), 
             join("$PROJECT_DIR", "lib"),
             join("$PROJECT_DIR", "include"),
-            join("$PROJECT_DIR", "config")
-        ],
+            join("$PROJECT_DIR", "config")      
+        ],  
 
-        CFLAGS = [
-            "-Wall",
+        CFLAGS = [      
+            "-Wall", 
             "-Wfatal-errors",
             "-Wstrict-prototypes",
             "-Wno-unused-function",
-            "-Wno-unused-value",
+            "-Wno-unused-value",            
             "-Wno-unused-variable",
-            "-Wno-unused-but-set-variable",
-            "-Wno-int-conversion",
-            "-Wno-pointer-sign",
+            "-Wno-unused-but-set-variable",            
+            "-Wno-int-conversion",                            
+            "-Wno-pointer-sign",  
             "-Wno-char-subscripts",
-            "-mno-unaligned-access",
+            "-mno-unaligned-access", 
         ],
-        CXXFLAGS = [
-            "-std=c++11",
+        CXXFLAGS = [   
+            "-std=c++11",                              
             "-fno-rtti",
-            "-fno-exceptions",
+            "-fno-exceptions", 
             "-fno-non-call-exceptions",
             "-fno-use-cxa-atexit",
             "-fno-threadsafe-statics",
-            "-Wno-unused-function",
+            "-Wno-unused-function",            
             "-Wno-unused-variable",
             "-Wno-unused-value"
-        ],
+        ],    
         CCFLAGS = [
             env.cortex,
-            "-Os",
-            "-fdata-sections",
+            "-Os",                          
+            "-fdata-sections",      
             "-ffunction-sections",
             "-fno-strict-aliasing",
-            "-fsingle-precision-constant",
-            "-Wall",
-            "-Wfatal-errors",
-            #"-Wp,-w",
-        ],
+            "-fsingle-precision-constant",     
+            "-Wall", 
+            "-Wfatal-errors",                                
+            #"-Wp,-w",            
+        ],   
 
-        LINKFLAGS = [
+        LINKFLAGS = [ 
             env.cortex,
-            "-Os",
-            "-nostartfiles",
-            "-Xlinker", "--gc-sections",
+            "-Os",                                               
+            "-nostartfiles",        
+            "-Xlinker", "--gc-sections",              
             "-Wl,--gc-sections",
             "--entry=proc_main_task",
             nano
-        ],
+        ],    
 
-        LDSCRIPT_PATH = join(SDK, "cpp_bc66.ld"),
+        LDSCRIPT_PATH = join(SDK, "cpp_bc66.ld"), 
 
         LIBPATH = [ SDK ],  # *.a
 
-        LIBSOURCE_DIRS = [ SDK ],  # user libraries
+        LIBSOURCE_DIRS = [ SDK ],  # user libraries     
 
-        LIBS = [ "gcc", "m", "_app_start" ],
+        LIBS = [ "gcc", "m", "_app_start" ],          
 
         BUILDERS = dict(
             ElfToBin = Builder(
@@ -150,35 +154,35 @@ def dev_init(env, platform):
                     "$TARGET",
                 ]), "Building $TARGET"),
                 suffix = ".dat"
-            ),
-            MakeHeader = Builder(
+            ),    
+            MakeHeader = Builder( 
                 action = env.VerboseAction(dev_header, "ADD HEADER"),
                 suffix = ".bin"
-            )
-        ),
+            )       
+        ), 
         UPLOADCMD = dev_uploader
     )
-    libs = []
+    libs = []    
 
     libs.append(
         env.BuildLibrary(
             join("$BUILD_DIR", "_ril"),
             join(SDK, "ril", "src"),
-    ))
+    ))  
 
-    # PROJECT
+    # PROJECT 
     libs.append(
         env.BuildLibrary(
-            join("$BUILD_DIR", "_custom_lib"),
-            join("$PROJECT_DIR", "lib"),
-    ))
+            join("$BUILD_DIR", "_custom_lib"), 
+            join("$PROJECT_DIR", "lib"),                       
+    ))   
 
     libs.append(
         env.BuildLibrary(
-            join("$BUILD_DIR", "_custom_config"),
-            join("$PROJECT_DIR", "config"),
-    ))
-
+            join("$BUILD_DIR", "_custom_config"), 
+            join("$PROJECT_DIR", "config"),                       
+    ))     
+    
     env.Append(LIBS = libs)
 
-
+ 
