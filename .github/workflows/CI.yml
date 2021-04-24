@@ -12,7 +12,7 @@ on:
       - './*.yml'
 
 env:
-  UPLOAD_BUILD: true
+  UPLOAD_BUILD: false
 
 jobs:
   CodeCheck:
