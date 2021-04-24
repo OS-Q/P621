@@ -1,4 +1,4 @@
-# WizIO 2018 Georgi Angelov
+# WizIO .
 # http://www.wizio.eu/
 # https://github.com/Wiz-IO
 
@@ -8,35 +8,35 @@ import struct
 import datetime
 from os.path import join
 
-def makeHDR( dat ):   
+def makeHDR( dat ):
     bin = dat.replace(".dat", ".bin")
 
     dst = open(bin, "wb")
     arr = [0x4D, 0x4D, 0x4D, 0x01, 0x40, 0x00, 0x00, 0x00, 0x46, 0x49, 0x4C, 0x45, 0x5F, 0x49, 0x4E, 0x46]
     data = bytearray(arr)
-    dst.write(data) 
+    dst.write(data)
     arr = [0x4F, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x70, 0x07, 0x00, 0x00, 0x20, 0x29, 0x08]
     data = bytearray(arr)
-    dst.write(data) 
-    
+    dst.write(data)
+
     src_size = os.stat( dat ).st_size + 64 # ? ? ?
     #print( "APPLICATION SIZE: ", src_size + 64, " bytes" )
-    dst.write( struct.pack('<i', src_size) ) # write size 
+    dst.write( struct.pack('<i', src_size) ) # write size
 
     arr = [                        0xFF, 0xFF, 0xFF, 0xFF, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
     data = bytearray(arr)
-    dst.write(data)     
+    dst.write(data)
     arr = [0x40, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
     data = bytearray(arr)
-    dst.write(data)   
+    dst.write(data)
 
     src = open(dat, "rb")
     dst.write( src.read() )
     src.close()
-    dst.close()  
+    dst.close()
     #makeFota(bin)
 
-def makeCFG( dat, start_address = 0x08292000 ): 
+def makeCFG( dat, start_address = 0x08292000 ):
     cfg = dat.replace(".dat", ".cfg")
     now = datetime.date.today()
     f = open(cfg, "w")
@@ -78,11 +78,11 @@ def makeFotaInfo(dst, offset, start, size):
     dst.write( struct.pack('<i', 0x000BF000) )      # m_partition_length
     dst.write( struct.pack('<i', 0x00000000) )      # m_sig_offset
     dst.write( struct.pack('<i', 0x00000000) )      # m_sig_length
-    dst.write( struct.pack('<i', 0x00000000) )      # m_is_compressed 
+    dst.write( struct.pack('<i', 0x00000000) )      # m_is_compressed
     for i in range(16):
-        dst.write( struct.pack('<i', i) )  # m_version_info[16]    
-    dst.write( struct.pack('<i', 0x00000000) )      # m_bin_type       
-    dst.write( struct.pack('<i', 0x00000000) )      # m_bin_reserved[4]         
+        dst.write( struct.pack('<i', i) )  # m_version_info[16]
+    dst.write( struct.pack('<i', 0x00000000) )      # m_bin_type
+    dst.write( struct.pack('<i', 0x00000000) )      # m_bin_reserved[4]
 
 def makeFota(src):
     print( "FOTA SRC:", src )
@@ -93,7 +93,7 @@ def makeFota(src):
     dst = open(os.path.dirname(src) + "\\FOTA_program.bin", "wb")
     arr = [0x4D,0x4D,0x4D,0x00,   0x01,0x00,0x00,0x00,] # m_magic_ver, m_bin_num, m_bin_info[4]
     data = bytearray(arr)
-    dst.write(data) 
+    dst.write(data)
     makeFotaInfo(dst, 0x6C, 0x08292000, binSize)
     bin = open(src, "rb")
     dst.write( bin.read() )
