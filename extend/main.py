@@ -1,13 +1,3 @@
-#
-##########################################################################
-# Autor: WizIO .
-#   http://www.wizio.eu/
-#   https://github.com/Wiz-IO/platform-quectel
-#
-# Support: Comet Electronics
-#   https://www.comet.bg/?cid=92
-##########################################################################
-
 from os.path import join
 from SCons.Script import (AlwaysBuild, Builder, COMMAND_LINE_TARGETS, Default, DefaultEnvironment)
 from colorama import Fore
@@ -15,9 +5,6 @@ from colorama import Fore
 env = DefaultEnvironment()
 print( Fore.GREEN + '<<<<<<<<<<<< '+env.BoardConfig().get("name").upper()+" . >>>>>>>>>>>>" )
 
-####################################################
-# Build executable and linkable program
-####################################################
 elf = env.BuildProgram()
 src = env.MakeHeader( join("$BUILD_DIR", "${PROGNAME}"), env.ElfToBin(join("$BUILD_DIR", "${PROGNAME}"), elf) )
 AlwaysBuild( src )

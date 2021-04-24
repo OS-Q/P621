@@ -110,7 +110,7 @@ jobs:
         if: env.UPLOAD_BUILD
         uses: actions/upload-artifact@v2
         with:
-          name: pio_${{ matrix.example }}_${{ matrix.os }}
+          name: qio_${{ matrix.example }}_${{ matrix.os }}
           path: examples/${{ matrix.example }}/.pio/build
 
   pio_pass:

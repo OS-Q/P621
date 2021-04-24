@@ -1,7 +1,3 @@
-# WizIO .
-#   http://www.wizio.eu/
-#   https://github.com/Wiz-IO/platform-quectel
-
 from SCons.Script import DefaultEnvironment
 
 env = DefaultEnvironment()
