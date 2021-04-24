@@ -235,7 +235,7 @@ jobs:
         id: rebuild
         if: steps.getgh.outputs.status == 'success' && !cancelled()
         run: |
-          qio run -d examples/Arduino/bg96/bg96_i2c_Si7021
+          qio run -d examples/bg96_i2c_Si7021
           echo "::set-output name=status::success"
 
       - name: Send Mail
