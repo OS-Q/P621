@@ -54,15 +54,18 @@ jobs:
       fail-fast: false
       matrix:
         example:
-          - "bg96_amazon_mqtt"
+          # - "bg96_amazon_mqtt"
           - "bg96_client_http"
           - "bg96_dss_dns"
           - "bg96_gps"
-          - "bg96_hello_world"
+          # - "bg96_hello_world"
           - "bg96_i2c_Si7021"
-          - "bg96_PubSubClient"
-          - "coap_basic"
-
+          # - "bg96_PubSubClient"
+          # - "coap_basic"
+          - "tcp_http"
+          - "timers"
+          - "BC66_A4_MQTT"
+          - "BC66_CPP_HELLO"
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     runs-on: ${{ matrix.os }}
