@@ -1,4 +1,22 @@
 *.db
+*.pyc
 __pycache__/
-*.pio/
 *.vscode/
+*.pio/
+*.rst
+# *.md
+**/*/README*
+LICENSE*
+*.png
+*.jpg
+examples/**/*.yml
+examples/**/*.md
+**/CONTR*
+**/CHANGE*
+Change*
+CHANGE*
+asf4/
+nxp*/
+docs/
+doc/
+/build

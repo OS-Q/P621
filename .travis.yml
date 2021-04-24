@@ -1,6 +1,11 @@
 language: python
 python:
-  - "3.7"
+  - "3.9"
+os:
+  - linux
+
+git:
+  depth: 1
 
 env:
   - PLATFORMIO_PROJECT_DIR=examples/Arduino/bg96/bg96_i2c_Si7021
@@ -8,12 +13,11 @@ env:
   - PLATFORMIO_PROJECT_DIR=examples/Arduino/bg96/bg96_client_http
 
 install:
-  - pip install -U https://github.com/OS-Q/S03/releases/latest/download/S03.zip
-  - platformio platform install file://.
+  - pip install -U https://github.com/OS-Q/M03/releases/latest/download/qio.zip
+  - qio platform install file://.
 
 script:
-  - platformio run -d $PLATFORMIO_PROJECT_DIR
+  - qio run -d $PLATFORMIO_PROJECT_DIR
 
 notifications:
   email: false
-
