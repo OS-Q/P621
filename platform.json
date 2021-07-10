@@ -1,50 +1,44 @@
 {
   "name": "P621",
-  "title": "Quectel",
-  "description": "Quectel development platform 2018 Georgi Angelov",
-  "url": "https://github.com/Wiz-IO/platform-quectel",
-  "homepage": "http://www.wizio.eu/",
+	"title": "OS-Q NB-IoT Development Platform",
+	"description": "Development Platform for MT2625 Chipsets",
+	"url": "http://www.OS-Q.com/",
+	"homepage": "http://www.OS-Q.com/",
   "license": "Apache-2.0",
-  "engines": { "platformio": "^3.0.0" },
+  "keywords": [
+		"dev-platform",
+		"NB-IoT",
+		"MT2625",
+		"OS-Q"
+	],
+  "engines": {
+    "platformio": "^5"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Wiz-IO/platform-quectel.git"
+    "url": "https://github.com/OS-Q/P621.git"
   },
-  "version": "2.1.03",
-  "packageRepositories": [
-    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
-    "http://dl.platformio.org/packages/manifest.json"
-  ],
+  "version": "2.1.0",
   "frameworks": {
       "opencpu": {
-        "package": "framework-quectel",
+        "package": "F621",
         "script": "builder/frameworks/opencpu.py"
       },
-      "openlinux": {
-        "package": "framework-quectel",
-        "script": "builder/frameworks/openlinux.py"
-      },
-      "threadx": {
-        "package": "framework-quectel",
-        "script": "builder/frameworks/threadx.py"
-      },
       "arduino": {
-        "package": "framework-quectel",
+        "package": "F621",
         "script": "builder/frameworks/arduino.py"
       }
   },
   "packages": {
-    "framework-quectel": {
+		"toolchain-gccarmnoneeabi": {
+			"type": "toolchain",
+			"owner": "platformio",
+			"version": "~1.80201.0"
+		},
+    "F621": {
         "type": "framework",
-        "version": "https://github.com/Wiz-IO/framework-quectel.git"
-    },
-    "toolchain-gccarmnoneeabi": {
-        "type": "toolchain",
-        "version": "=1.70201.0"
-    },
-    "toolchain-gcc-ec2x": {
-        "type": "toolchain",
-        "version": "https://github.com/Wiz-IO/LIB/raw/master/quectel/toolchain-gcc-ec2x-v1.0.0.zip"
+        "optional": true,
+        "version": "https://github.com/OS-Q/F621.git"
     },
     "tool-quectel": {
         "type": "uploader",
