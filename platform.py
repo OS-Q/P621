@@ -1,7 +1,7 @@
 from platform import system
 from platformio.managers.platform import PlatformBase
 
-class P67Platform(PlatformBase):
+class P621Platform(PlatformBase):
     def configure_default_packages(self, variables, targets):
         framework = variables.get("pioframework", [])
         if variables["board"].startswith('ec2'):
