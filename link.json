@@ -39,11 +39,6 @@
         "type": "framework",
         "optional": true,
         "version": "https://github.com/OS-Q/F621.git"
-    },
-    "tool-quectel": {
-        "type": "uploader",
-        "version": "https://github.com/Wiz-IO/tool-quectel.git",
-        "optional": true
     }
   }
 }

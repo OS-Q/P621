@@ -30,20 +30,14 @@
       }
   },
   "packages": {
-		"toolchain-gccarmnoneeabi": {
-			"type": "toolchain",
-			"owner": "platformio",
-			"version": "~1.80201.0"
-		},
+    "toolchain-gccarmnoneeabi": {
+      "type": "toolchain",
+      "version": "=1.70201.0"
+    },
     "F621": {
         "type": "framework",
         "optional": true,
         "version": "https://github.com/OS-Q/F621.git"
-    },
-    "tool-quectel": {
-        "type": "uploader",
-        "version": "https://github.com/Wiz-IO/tool-quectel.git",
-        "optional": true
     }
   }
 }
