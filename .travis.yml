@@ -8,9 +8,9 @@ git:
   depth: 1
 
 env:
-  - PLATFORMIO_PROJECT_DIR=examples/bg96_i2c_Si7021
-  - PLATFORMIO_PROJECT_DIR=examples/bg96_dss_dns
-  - PLATFORMIO_PROJECT_DIR=examples/bg96_client_http
+  - PLATFORMIO_PROJECT_DIR=examples/BC66_A1_HELLO
+  - PLATFORMIO_PROJECT_DIR=examples/BC66_A2_CLIENT_TCP
+  - PLATFORMIO_PROJECT_DIR=examples/BC66_A3_CLENT_HTTP
 
 install:
   - pip install -U https://github.com/OS-Q/M03/releases/latest/download/qio.zip

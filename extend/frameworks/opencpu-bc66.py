@@ -1,7 +1,3 @@
-# WizIO 2019 Georgi Angelov
-#   http://www.wizio.eu/
-#   https://github.com/Wiz-IO
-
 import os, sys
 from os.path import join
 from shutil import copyfile
@@ -26,7 +22,7 @@ def dev_create_template(env):
     D = join(env.subst("$PROJECT_DIR"), "config")
     if False == os.path.isdir(D):
         os.makedirs(D)
-        S = join(env.PioPlatform().get_package_dir("E67A"), "templates", env.BoardConfig().get("build.core"))
+        S = join(env.PioPlatform().get_package_dir("framework-quectel"), "templates", env.BoardConfig().get("build.core"))
         F = [
             "custom_feature_def.h",
             "custom_gpio_cfg.h",
@@ -40,7 +36,7 @@ def dev_create_template(env):
             if False == os.path.isfile(dst):
                 copyfile(join(S, I), dst)
     D = join(env.subst("$PROJECT_DIR"), "src")
-    S = join(env.PioPlatform().get_package_dir("E67A"), "templates", env.BoardConfig().get("build.core"))
+    S = join(env.PioPlatform().get_package_dir("framework-quectel"), "templates", env.BoardConfig().get("build.core"))
     if False == os.path.isfile( join(D, "main.c") ) and False == os.path.isfile( join(D, "main.cpp") ):
         copyfile( join(S, "main.c"), join(D, "main.c") )
 
@@ -67,7 +63,7 @@ def dev_compiler(env):
 def dev_init(env, platform):
     dev_create_template(env)
     dev_compiler(env)
-    framework_dir = env.PioPlatform().get_package_dir("E67A")
+    framework_dir = env.PioPlatform().get_package_dir("framework-quectel")
     core = env.BoardConfig().get("build.core")
     SDK = join(framework_dir, platform, core,  env.BoardConfig().get("build.sdk", "SDK15"))
     disable_nano = env.BoardConfig().get("build.disable_nano", "0") # defaut nano is enabled

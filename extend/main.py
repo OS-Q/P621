@@ -3,7 +3,7 @@ from SCons.Script import (AlwaysBuild, Builder, COMMAND_LINE_TARGETS, Default, D
 from colorama import Fore
 
 env = DefaultEnvironment()
-print( Fore.GREEN + '<<<<<<<<<<<< '+env.BoardConfig().get("name").upper()+" . >>>>>>>>>>>>" )
+print( Fore.GREEN + '<<<<<<<<<<<< '+env.BoardConfig().get("name").upper()+" 2018 Georgi Angelov >>>>>>>>>>>>" )
 
 elf = env.BuildProgram()
 src = env.MakeHeader( join("$BUILD_DIR", "${PROGNAME}"), env.ElfToBin(join("$BUILD_DIR", "${PROGNAME}"), elf) )

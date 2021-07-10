@@ -1,6 +1,4 @@
-# WizIO .
-# http://www.wizio.eu/
-# https://github.com/Wiz-IO
+
 
 import os
 import sys

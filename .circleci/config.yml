@@ -20,9 +20,6 @@ jobs:
       - run:
           name: "Build"
           command: |
-            pio run -d examples/bg96_i2c_Si7021
-            pio run -d examples/bg96_dss_dns
-            pio run -d examples/bg96_client_http
             pio run -d examples/BC66_A1_HELLO
             pio run -d examples/BC66_A2_CLIENT_TCP
             pio run -d examples/BC66_A3_CLENT_HTTP
@@ -47,9 +44,6 @@ jobs:
       - run:
           name: "Build"
           command: |
-            pio run -d examples/bg96_i2c_Si7021
-            pio run -d examples/bg96_dss_dns
-            pio run -d examples/bg96_client_http
             pio run -d examples/BC66_A1_HELLO
             pio run -d examples/BC66_A2_CLIENT_TCP
             pio run -d examples/BC66_A3_CLENT_HTTP

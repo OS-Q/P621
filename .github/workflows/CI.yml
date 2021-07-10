@@ -55,10 +55,6 @@ jobs:
       fail-fast: false
       matrix:
         example:
-          - "bg96_client_http"
-          - "bg96_dss_dns"
-          - "bg96_gps"
-          - "bg96_i2c_Si7021"
           - "BC66_A1_HELLO"
           - "BC66_A2_CLIENT_TCP"
           - "BC66_A3_CLENT_HTTP"
@@ -144,10 +140,6 @@ jobs:
       fail-fast: false
       matrix:
         example:
-          - "bg96_client_http"
-          - "bg96_dss_dns"
-          - "bg96_gps"
-          - "bg96_i2c_Si7021"
           - "BC66_A1_HELLO"
           - "BC66_A2_CLIENT_TCP"
           - "BC66_A3_CLENT_HTTP"
