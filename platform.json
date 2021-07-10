@@ -12,13 +12,13 @@
 		"OS-Q"
 	],
   "engines": {
-    "platformio": "^5"
+    "platformio": "^3"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/OS-Q/P621.git"
   },
-  "version": "2.1.0",
+  "version": "1.1.0",
   "frameworks": {
       "opencpu": {
         "package": "F621",
@@ -32,7 +32,7 @@
   "packages": {
     "toolchain-gccarmnoneeabi": {
       "type": "toolchain",
-      "version": "=1.70201.0"
+      "version": "~1.70201.0"
     },
     "F621": {
         "type": "framework",

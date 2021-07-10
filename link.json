@@ -18,23 +18,22 @@
     "type": "git",
     "url": "https://github.com/OS-Q/P621.git"
   },
-  "version": "2.1.0",
+  "version": "1.1.0",
   "frameworks": {
       "opencpu": {
         "package": "F621",
-        "script": "builder/frameworks/opencpu.py"
+        "script": "extend/frameworks/opencpu.py"
       },
       "arduino": {
         "package": "F621",
-        "script": "builder/frameworks/arduino.py"
+        "script": "extend/frameworks/arduino.py"
       }
   },
   "packages": {
-		"toolchain-gccarmnoneeabi": {
-			"type": "toolchain",
-			"owner": "platformio",
-			"version": "~1.80201.0"
-		},
+    "toolchain-gccarmnoneeabi": {
+      "type": "toolchain",
+      "version": "~1.70201.0"
+    },
     "F621": {
         "type": "framework",
         "optional": true,
